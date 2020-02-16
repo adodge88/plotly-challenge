@@ -1,7 +1,15 @@
 // BELLY BUTTON BACTERIA
+
+// 1. Use the D3 library to read in samples.json.
+var bbData = d3.json("data/bellyButtonData.json").then((importedData) => {
+    console.log("Imported Date: ",importedData);
+    var bacteriaData = importedData;
+});
+
+
 // Load test subject IDs in to dropdown
-var dropdownSubjects = bellyButtonData.dataset.names;
-console.log(dropdownSubjects);
+var dropdownSubjects = bbData.dataset.names;
+console.log("subjects: ",dropdownSubjects);
 
 dropdownSubjects.forEach(function(subject){
     //add a new Option element to the HTML
@@ -54,12 +62,6 @@ function updatePlotly() {
   
   
 
-
-// 1. Use the D3 library to read in samples.json.
-d3.json("data/bellyButtonData.json").then((importedData) => {
-    console.log(importedData);
-    var bacteriaData = importedData;
-});
 // 2. Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
     // Use sample_values as the values for the bar chart.
     // Use otu_ids as the labels for the bar chart.
